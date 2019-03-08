@@ -56,14 +56,6 @@ rails server -b 0.0.0.0 &
 pid="$!"
 trap "echo 'Stopping Lobsters - pid: $pid'; kill -SIGTERM $pid" SIGINT SIGTERM
 
-# Run the cron job every 5 minutes
-while : ; do
-  echo "$(date +"%Y-%m-%d %H:%M:%S") - Running cron jobs."
-  bundle exec ruby script/mail_new_activity
-  bundle exec ruby script/post_to_twitter
-  sleep 300
-done &
-
 # Wait for process to end.
 while kill -0 $pid > /dev/null 2>&1; do
     wait

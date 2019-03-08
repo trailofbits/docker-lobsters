@@ -14,12 +14,12 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV['LOBSTER_DATABASE'] %>_development
+  database: <%= ENV['LOBSTER_DATABASE'] %>
 
 test:
   <<: *default
-  database: <%= ENV['LOBSTER_DATABASE'] %>_test
+  database: <%= ENV['LOBSTER_DATABASE'] %>
 
 production:
   <<: *default
-  database: <%= ENV['LOBSTER_DATABASE'] %>_production
+  database: <%= ENV['LOBSTER_DATABASE'] %>

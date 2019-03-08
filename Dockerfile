@@ -82,24 +82,23 @@ USER lobsters
 WORKDIR /lobsters/
 
 # Set environment variables.
-ENV MARIADB_HOST="mariadb" \
+ENV MARIADB_HOST="DB_HOST" \
     MARIADB_PORT="3306" \
-    MARIADB_PASSWORD="password" \
-    MARIADB_USER="root" \
-    LOBSTER_DATABASE="lobsters" \
-    LOBSTER_HOSTNAME="localhost" \
-    LOBSTER_SITE_NAME="Example News" \
-    RAILS_ENV="development" \
+    MARIADB_PASSWORD="DB_PASSWORD" \
+    MARIADB_USER="DB_USERNAME" \
+    LOBSTER_DATABASE="DB_NAME" \
+    LOBSTER_HOSTNAME="lobsters.trailofbits.com" \
+    LOBSTER_SITE_NAME="Trail of Bits" \
+    RAILS_ENV="production" \
     SECRET_KEY="" \
     GEM_HOME="/lobsters/.gem" \
     GEM_PATH="/lobsters/.gem" \
     BUNDLE_PATH="/lobsters/.bundle" \
     RAILS_MAX_THREADS="5" \
-    SMTP_HOST="127.0.0.1" \
-    SMTP_PORT="25" \
-    SMTP_STARTTLS_AUTO="true" \
-    SMTP_USERNAME="lobsters" \
-    SMTP_PASSWORD="lobsters" \
+    SMTP_HOST="SMTP_HOST" \
+    SMTP_PORT="587" \
+    SMTP_USERNAME="SMTP_USERNAME" \
+    SMTP_PASSWORD="SMTP_PASSWORD" \
     RAILS_LOG_TO_STDOUT="1" \
     PATH="/lobsters/.gem/ruby/2.3.0/bin:$PATH"
 
@@ -107,4 +106,4 @@ ENV MARIADB_HOST="mariadb" \
 EXPOSE 3000
 
 # Execute our entry script.
-CMD ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["bundle", "exec", "/usr/local/bin/docker-entrypoint.sh"]
